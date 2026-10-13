@@ -1,77 +1,90 @@
-# Day 01: Environment and Repository Blueprint
+# 40-Day Advanced Backend Engineering Curriculum
 
-This repository contains the complete environment structure, runtime baseline, and isolation configuration required for predictable, reproducible local Python development.
-
-##  Core Concepts
-*   **Interpreter Selection:** The specific `python.exe` binary engine used to run the application. Forcing VS Code to explicitly target our local workspace environment prevents the IDE from accidentally invoking unmanaged system runtimes or global packages.
-*   **Isolated Dependencies:** Sandboxing external software libraries (like `fastapi` and `pydantic`) within a local workspace folder (`.venv`). This guarantees our project configurations never clash with other environments on the machine.
-*   **Project Roots:** The highest-level root folder anchoring our version history tree (`.git\`), layout folders, configurations, and internal path resolutions to guarantee complete workspace portability.
-*   **Reproducible Setup:** Utilizing structured dependency lockfiles (`requirements.txt`) and unified terminal recipes so that any machine can mirror this exact execution context with zero variation.
----
-## version Check 
-
-```cmd
-::Windows version os version 
-ver
-::python version
-python --version
-::git version
-git --version
-Version is present inside version folder
-```
----
-
-##  Project Architecture
-The project workspace is partitioned into specific semantic boundaries:
-*   `app/`     : Core application logic, routers, database schemas, and service-layer validation pipelines.
-*   `tests/`   : Functional, unit, and structural execution assertions.
-*   `docs/`    : System specifications, baseline manifests, and API manuals.
-*   `scripts/` : Utility deployment, environmental scaffolding, or database maintenance scripts.
+Welcome to the **40-Day Backend Engineering Intensive**. This repository tracks the progression from Python and architectural foundations to production-ready deployment, caching, and regression testing. Each week focuses on a core backend pillar, culminating in a concrete, verifiable deliverable.
 
 ---
 
-##  Windows CMD Setup & Reproducible Installation
+## 🗺️ Curriculum Overview
 
-### 1. Fresh Workspace Initialization
-To recreate this isolated sandbox environment from scratch in a fresh Windows Command Prompt (`cmd.exe`), navigate to your project root folder and execute:
-```cmd
-:: Create isolation boundary, activate local runtime, and upgrade the installer core
-python -m venv .venv && call .venv\Scripts\activate && python -m pip install --upgrade pip
-
-:: Deploy explicit and transitive project dependency structures
-pip install -r requirements.txt
-```
-
-### 2. Standard Reinstallation Routine
-If the environment is already initialized and you only need to sync package definitions, run:
-```cmd
-python -m pip install --upgrade pip && pip install -r requirements.txt
-```
+| Week | Focus | Core Tools | Weekly Deliverable |
+| :--- | :--- | :--- | :--- |
+| **1** | Python & Project Foundation | Python, Git, Venv, IDE/Editor | Typed validation/service exercises & clean Git history |
+| **2** | FastAPI & Starlette | FastAPI, Uvicorn, Pydantic, HTTPX, Pytest | Tested REST mini-project with meaningful errors & logs |
+| **3** | PostgreSQL & Schema History | PostgreSQL, SQLAlchemy, Alembic, SQL Client | Persistent task data, migrations, & activity tracking |
+| **4** | Authentication & Authorization | pwdlib (Argon2), PyJWT, Pytest | Verified sessions, multi-user ownership checks |
+| **5** | GraphQL with Ariadne | Ariadne, GraphQL Schema | REST/GraphQL rule consistency & bounded queries |
+| **6** | Failure Handling & Caching | Redis, ARQ, Core Failure Fixtures | Resilient core behavior with scoped cache/worker labs |
+| **7** | Docker Compose & Readiness | Docker, Compose, Service DNS, Healthchecks | Multi-container stack with self-healing DB dependencies |
+| **8** | Regression & Handover | Pytest, Ruff, Mypy, CI Config | Fully linted backend, regression evidence, & runbook |
 
 ---
 
-##  Verification & Acceptance Check
-To confirm strict execution isolation, open a clean `cmd.exe` terminal and run:
+## 🛠️ Weekly Breakdowns & Deliverables
 
-1.  **Activate Environment:**
-    ```cmd
-    call .venv\Scripts\activate.bat
-    ```
-2.  **Verify Interpreter Target Path:**
-    ```cmd
-    where python
-    ```
-    *Acceptance Criteria: The first resolution path must point directly inside your localized project root `\.venv\Scripts\python.exe`.*
-3.  **Verify Environmental Cleanliness:**
-    ```cmd
-    pip list
-    ```
-    *Acceptance Criteria: The output must purely return the specified baseline stack (FastAPI 0.143.0, Pydantic, Uvicorn, and related sub-dependencies) with zero unmanaged global modules visible.*
+### Week 1: Python & Project Foundation (Days 1–5)
+*   **Focus:** Establishing environment isolation, strict type safety, and professional version control workflows.
+*   **Tools:** Python 3.11+, Git, `venv`/`poetry`, VS Code/Cursor/PyCharm.
+*   **Deliverable:** A fresh project repository containing typed validation exercises, isolated service patterns, and a highly readable, atomic Git history.
+
+### Week 2: FastAPI & Starlette (Days 6–10)
+*   **Focus:** Building robust asynchronous RESTful APIs, structured request validation, and comprehensive API integration testing.
+*   **Tools:** FastAPI, Uvicorn, Pydantic v2, HTTPX, Pytest.
+*   **Deliverable:** A tested REST mini-project featuring production-grade global exception handlers and structured JSON logging.
+
+### Week 3: PostgreSQL Persistence & Schema History (Days 11–15)
+*   **Focus:** Relational database modeling, asynchronous ORM configuration, and programmatic database migration tracking.
+*   **Tools:** PostgreSQL, SQLAlchemy (Async), Alembic, DBeaver/pgAdmin.
+*   **Deliverable:** A persistent data layer featuring task management tables, an automated activity/audit log, and a clean history of reviewed Alembic migrations.
+
+### Week 4: Authentication & Authorization (Days 16–20)
+*   **Focus:** Implementing secure password hashing, stateless token management, and strict resource-level access control.
+*   **Tools:** `pwdlib` (Argon2), PyJWT, Pytest.
+*   **Deliverable:** An auth system validating user sessions, multi-user resource ownership checks, and secure public-facing Pydantic schemas that filter out sensitive data.
+
+### Week 5: GraphQL with Ariadne (Days 21–25)
+*   **Focus:** Exposing a schema-first GraphQL API alongside existing REST endpoints while ensuring business logic parity.
+*   **Tools:** Ariadne, GraphQL Core.
+*   **Deliverable:** A functional GraphQL gateway maintaining authorization consistency with the REST layer, featuring bounded queries to prevent deep nesting exploits.
+
+### Week 6: Failure Handling with Cache & Job Labs (Days 26–30)
+*   **Focus:** Introducing system resilience, circuit breakers, caching strategies, and offloading heavy tasks to asynchronous workers.
+*   **Tools:** Redis, ARQ, Custom Failure Fixtures.
+*   **Deliverable:** A resilient backend architecture containing scoped cache-aside experiments and background worker execution logs.
+
+### Week 7: Docker Compose & Readiness (Days 31–35)
+*   **Focus:** Containerizing applications, managing multi-service networking, and implementing deterministic service startup order.
+*   **Tools:** Docker, Docker Compose, Service DNS, Healthchecks.
+*   **Deliverable:** A complete application stack that spins up seamlessly, persists data across container restarts, and gracefully recovers if the database dependency fails during startup.
+
+### Week 8: Regression & Handover (Days 36–40)
+*   **Focus:** Code quality enforcement, static analysis, continuous integration setup, and project finalization.
+*   **Tools:** Pytest, Ruff, Mypy, GitHub Actions / GitLab CI.
+*   **Deliverable:** A fully reviewed backend with 100% pass rates on type-checking and testing pipelines, complete with a reproducible operational runbook.
 
 ---
 
-##  Running the Server Environment
-Once code assets are configured inside the execution tree, run the development microservice via:
-```cmd
-uvicorn app.main:app --reload
-```
+## 🚀 Getting Started
+
+### Prerequisites
+Make sure you have the following installed locally:
+*   Python 3.11 or higher
+*   Docker & Docker Compose
+*   PostgreSQL Client
+
+### Local Installation
+1. Clone the repository:
+   ```bash
+   git clone <your-repo-url>
+   cd backend-40-day-focus
+   ```
+2. Initialize the virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use: venv\Scripts\activate
+   ```
+3. Install dependencies (updated dynamically per week):
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
