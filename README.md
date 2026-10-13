@@ -1,10 +1,10 @@
 # 40-Day Advanced Backend Engineering Curriculum
 
-Welcome to the **40-Day Backend Engineering Intensive**. This repository tracks the progression from Python and architectural foundations to production-ready deployment, caching, and regression testing. Each week focuses on a core backend pillar, culminating in a concrete, verifiable deliverable.
+Welcome to the **40-Day Backend Engineering Internship**. This repository tracks the progression from Python and architectural foundations to production-ready deployment, caching, and regression testing. Each week focuses on a core backend pillar, culminating in a concrete, verifiable deliverable.
 
 ---
 
-## 🗺️ Curriculum Overview
+##  Curriculum Overview
 
 | Week | Focus | Core Tools | Weekly Deliverable | Status |
 | :--- | :--- | :--- | :--- | :---: |
@@ -19,7 +19,7 @@ Welcome to the **40-Day Backend Engineering Intensive**. This repository tracks 
 
 ---
 
-## 🛠️ Weekly Breakdowns & Deliverables
+##  Weekly Breakdowns & Deliverables
 
 ### Week 1: Python & Project Foundation (Days 1–5)
 * **Focus:** Establishing environment isolation, strict type safety, and professional version control workflows.
@@ -63,29 +63,4 @@ Welcome to the **40-Day Backend Engineering Intensive**. This repository tracks 
 
 ---
 
-## 🚀 Getting Started
 
-### Prerequisites
-Make sure you have the following installed locally:
-* Python 3.11 or higher
-* Docker & Docker Compose
-* PostgreSQL Client
-
-### Local Installation
-
-1. Clone the repository:
-```bash
-git clone <your-repo-url>
-cd backend-40-day-focus
-```
-
-2. Initialize the virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-```
-
-3. Install dependencies (updated dynamically per week):
-```bash
-pip install -r requirements.txt
-```
