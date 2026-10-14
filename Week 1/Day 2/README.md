@@ -4,12 +4,12 @@ This repository tracks the foundational setup, validation logic, and decoupled b
 
 ---
 
-## 📋 Business Rules & Validation Matrix
+## 📋 Business Rules & Validation Matrix (Rule Table)
 
-| Field | Rule Description | Valid Examples | Invalid Examples | Action on Failure |
-| :--- | :--- | :--- | :--- | :--- |
-| **Title** | Non-empty string, no pure whitespace, max 100 characters. Returns stripped text. | `"Subodh Nepal"` | `""`, `"   "`, `"A" * 101` | Raises `ValidationError` |
-| **Priority** | Must parse cleanly to an integer between 1 (Low) and 3 (High). | `1`, `"2"`, `3` | `0`, `4`, `"Task complete"` | Raises `ValidationError` |
+| Field | Input Type | Enforced Business Rule | Valid Examples | Invalid Examples | Action on Failure |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Title** | `str` | Must be text, non-empty, no pure whitespace, max 100 characters. Returns stripped text. | `"Subodh Nepal"`, `"  Subodh Nepal "` | `""`, `"   "`, `"A" * 101`, `123` | Raises `ValidationError` |
+| **Priority** | `int` / `str` | Must parse cleanly to an integer between 1 (Low) and 3 (High). | `1`, `"2"`, `3` | `0`, `4`, `"Task complete"`, `[]` | Raises `ValidationError` |
 
 ### Why Parsing is Different from Accepting
 * **Accepting** checks only the primitive variable type signature (e.g., confirming an input is a string) without evaluating inner values. This allows dirty data like pure empty white spaces (`"   "`) to bypass security.
@@ -86,7 +86,7 @@ if __name__ == "__main__":
 
 ---
 
-## 🔍 Verification & Acceptance Check
+## 🔍 Verification & Acceptance Check (Sample Output)
 
 Run the module directly from your terminal to trigger your self-contained assertions suite:
 
@@ -110,6 +110,3 @@ Traceback (most recent call last):
     raise ValidationError("Priority cannot be integer.")
 __main__.ValidationError: Priority cannot be integer.
 ```
-
-
-Results are in png file and code in validators
