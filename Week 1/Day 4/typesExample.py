@@ -36,7 +36,7 @@ service.create_task("People","This is title")
 import os
 
 def load_config() -> dict:
-    port_raw = os.getenv("PORT", "3000")
+    port_raw = os.getenv("PORT", "5000")
     
     try:
         port = int(port_raw)
