@@ -41,39 +41,3 @@ async def create_task(task: Task):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
-from fastapi import FastAPI
-from typing import List
-from pydantic import BaseModel
-app = FastAPI(title="This is my model")
-class task(BaseModel):
-    id:int
-    title:str
-    description:str
-    completed:bool
-
-tasks_db={
-    "1":{"id":"1","title":"Hells","description":"lkdjdklsajd"}
-}
-@app.get("/health",response)
-def health():
-    return {"Status":"Healthy"}
-@app.get("/task/{task_id}",response)
-def task_get(task_id:int):
-    if task_id in tasks_db:
-        return tasks_db.get(task_id)
-@app.post("/item")
-async def postitem(item:task):
-    tasks_db.append(item.model_dump())
-    return tasks_db
-@app.patch("/item/{item_id}")
-async def itempatch(item_id:int,item:task):
-    if item_id not in tasks_db:
-        return None
-    return item
-@app.delete("/item/{item_id}")
-async def itemdelete(item_id:int,item):
-    if item_id in tasks_db:
-        del tasks_db[item_id]
-        return True
-
-
