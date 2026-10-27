@@ -29,7 +29,7 @@ This repository tracks the foundational setup, validation logic, and decoupled b
 | **DAY 05** | **Foundation Review** | Write an independent, net-new validation rule from scratch | **Boundary Implementation:** Coding a brand-new target constraint freely without copying existing solutions. | *Implement new domain constraint* | Dynamic validation execution proof |      Complete |
 | **DAY 05** | **Foundation Review** | Review input/output schemas, errors, and Git history logs | **Commit Stream Verification:** Audit functions against schema limits and clean up commit tracks for clarity. | `git log --oneline` | Human-readable commit stream |      Complete |
 | **WEEK REVIEW** | **Final Demonstration** | Run one valid case, one failure case, and record trainer comments | **Onsite Validation Drills:** Running code scenarios live while talking through core logic without notes. | Live demo on the last working day | Logged corrections for Week 2 |      Complete |
-| **EXTENSION WORK** | **Supervised Practice** | Compare Poetry with venv workflows during the 1:30 PM slot | **Tooling Tradeoffs (30-Min Slot):** Assessing lockfile tracking differences vs speed across platforms. | *Write tradeoff log sheet* | Documented package tool matrix | ⬜ Pending |
+
 
 ---
 
