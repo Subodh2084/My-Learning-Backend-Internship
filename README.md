@@ -9,7 +9,7 @@ Welcome to the **40-Day Backend Engineering Internship**. This repository tracks
 | Week | Focus | Core Tools | Weekly Deliverable | Status |
 | :--- | :--- | :--- | :--- | :---: |
 | **1** | Python & Project Foundation | Python, Git, Venv, IDE/Editor | Typed validation/service exercises & clean Git history |   [ Complete] |
-| **2** | FastAPI & Starlette | FastAPI, Uvicorn, Pydantic, HTTPX, Pytest | Tested REST mini-project with meaningful errors & logs |   [ Ongoing Day 8 Complete] |
+| **2** | FastAPI & Starlette | FastAPI, Uvicorn, Pydantic, HTTPX, Pytest | Tested REST mini-project with meaningful errors & logs |   [ Ongoing Day 9 Complete] |
 | **3** | PostgreSQL & Schema History | PostgreSQL, SQLAlchemy, Alembic, SQL Client | Persistent task data, migrations, & activity tracking |   [ ] |
 | **4** | Authentication & Authorization | pwdlib (Argon2), PyJWT, Pytest | Verified sessions, multi-user ownership checks |   [ ] |
 | **5** | GraphQL with Ariadne | Ariadne, GraphQL Schema | REST/GraphQL rule consistency & bounded queries |   [ ] |
