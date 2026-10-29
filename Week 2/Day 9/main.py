@@ -9,7 +9,7 @@ from starlette.middleware import Middleware
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.background import BackgroundTask
 
-# Setup clean, simple logging
+# Setup clean, simple loggingost
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("api")
 
