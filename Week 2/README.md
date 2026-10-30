@@ -13,7 +13,7 @@ This repository houses the core deliverables for **Week 2 of the Backend Develop
 | **Day 07** | **Schemas & Status Codes** | Build explicit typed input/output Pydantic schemas and catch validation edge cases. |      Complete | `app/schemas/tasks.py`<br>↳ Validation Contract Logs | • Title string constraints enforced.<br>• Malformed inputs caught as `422 Unprocessable Entity`. |
 | **Day 08** | **CRUD & Service Boundaries**| Separate transport logic from service layer. Handle stable IDs and deletions. |      COmplete | `app/services/tasks.py`<br>↳ CRUD Router Set | • Read-after-delete fails cleanly.<br>• 404 handled for missing IDs.<br>• Persistence limit documented. |
 | **Day 09** | **Starlette Middleware & Errors** | Inject request tracing IDs, duration logging, and fire-and-forget background metrics. |      Complete | `app/middleware/`<br>↳ Application Error Format | • `X-Request-ID` logs generated.<br>• Credentials stripped from trace logs.<br>• Background task durability note added. |
-| **Day 10** | **REST Mini Project Review** | Consolidate code base, run 5+ target integration tests via HTTPX, and perform peer clone test. | ⬜ | `tests/test_tasks.py`<br>↳ Complete Test Report | • 5+ meaningful criteria assertions validated.<br>• Robust assertions (No blind `200 OK` reliance). |
+| **Day 10** | **REST Mini Project Review** | Consolidate code base, run 5+ target integration tests via HTTPX, and perform peer clone test. |      Complete | `tests/test_tasks.py`<br>↳ Complete Test Report | • 5+ meaningful criteria assertions validated.<br>• Robust assertions (No blind `200 OK` reliance). |
 
 ---
 
