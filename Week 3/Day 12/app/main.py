@@ -1,18 +1,18 @@
 from typing import Annotated
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
-from database import Base, engine, get_db_session
+from database import Base, engine, get_db
 from models import create_task, get_all_tasks
 
 app = FastAPI()
 
-SessionDep = Annotated[Session, Depends(get_db_session)]
+SessionDep = Annotated[Session, Depends(get_db)]
 
 
 @app.on_event("startup")
 def on_startup() -> None:
+  
   Base.metadata.create_all(bind=engine)
-
 
 @app.post("/tasks/")
 def add_task(title: str, session: SessionDep):
