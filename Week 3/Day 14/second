@@ -1,0 +1,18 @@
+-- Migration: Create Activity Table
+CREATE TABLE task_activities (
+    activity_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    task_id INTEGER NOT NULL REFERENCES tasks(task_id),
+    changed_by INTEGER NOT NULL,
+    old_status TEXT NOT NULL,
+    new_status TEXT NOT NULL,
+    changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Record State Change: Task 1 shifts to 'Done'
+UPDATE tasks 
+SET status = 'Done' 
+WHERE task_id = 1;
+
+-- Write the Relational Audit Record
+INSERT INTO task_activities (task_id, changed_by, old_status, new_status)
+VALUES (1, 42, 'In Progress', 'Done');

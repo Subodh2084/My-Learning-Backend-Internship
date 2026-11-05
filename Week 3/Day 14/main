@@ -1,0 +1,41 @@
+-- Setup Tables
+CREATE TABLE projects (
+    project_id INTEGER PRIMARY KEY,
+    project_name TEXT NOT NULL
+);
+
+CREATE TABLE tasks (
+    task_id INTEGER PRIMARY KEY,
+    project_id INTEGER REFERENCES projects(project_id),
+    owner_id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    status TEXT NOT NULL
+);
+
+-- Populate Synthetic Dataset
+INSERT INTO projects (project_id, project_name) VALUES 
+(101, 'Alpha Initiative'),
+(102, 'Beta Refactor');
+
+INSERT INTO tasks (task_id, project_id, owner_id, title, status) VALUES 
+(1, 101, 42, 'Design system architecture', 'In Progress'),
+(2, 101, 42, 'Setup CI/CD pipeline', 'Todo'),
+(3, 102, 99, 'Write unit tests', 'Done'),
+(4, 102, 42, 'Database migration script', 'Todo');
+
+-- Query: Owned-Task List with Project Join (Filtered by Owner 42)
+SELECT 
+    t.task_id,
+    t.title AS task_title,
+    t.status,
+    p.project_name
+FROM tasks t
+INNER JOIN projects p ON t.project_id = p.project_id
+WHERE t.owner_id = 42
+ORDER BY t.task_id ASC; -- Ensures deterministic ordering
+
+Original Query (No Index on owner_id)
+
+
+
+
