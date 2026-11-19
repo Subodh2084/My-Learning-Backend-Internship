@@ -1,0 +1,77 @@
+# --- Core Types ---
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  createdAt: String!
+}
+
+type Project {
+  id: ID!
+  name: String!
+  description: String
+  owner: User!
+  tasks(limit: Int = 10, offset: Int = 0): [Task!]!
+}
+
+type Task {
+  id: ID!
+  title: String!
+  description: String
+  status: TaskStatus!
+  assignedTo: User
+  project: Project!
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+# --- Bounded Pagination & Inputs ---
+
+input PaginationInput {
+  limit: Int!
+  offset: Int!
+}
+
+input CreateUserInput {
+  username: String!
+  email: String!
+}
+
+input CreateProjectInput {
+  name: String!
+  description: String
+  ownerId: ID!
+}
+
+input CreateTaskInput {
+  projectId: ID!
+  title: String!
+  description: String
+  assignedToId: ID
+}
+
+input UpdateTaskStatusInput {
+  taskId: ID!
+  status: TaskStatus!
+}
+
+# --- Operations ---
+
+type Query {
+  me: User
+  project(id: ID!): Project
+  projects(page: PaginationInput!): [Project!]!
+  task(id: ID!): Task
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  createProject(input: CreateProjectInput!): Project!
+  createTask(input: CreateTaskInput!): Task!
+  updateTaskStatus(input: UpdateTaskStatusInput!): Task!
+}
