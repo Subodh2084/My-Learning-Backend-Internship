@@ -1,0 +1,39 @@
+# GraphQL Schema matching the Shared Contract (Guide Page 5)
+enum TaskStatus {
+  OPEN
+  IN_PROGRESS
+  DONE
+}
+
+type Task {
+  id: ID!
+  title: String!
+  status: TaskStatus!
+  ownerId: ID!
+}
+
+type DeleteResult {
+  id: ID!
+  deleted: Boolean!
+}
+
+input TaskInput {
+  title: String!
+  status: TaskStatus = OPEN
+}
+
+input TaskUpdate {
+  title: String
+  status: TaskStatus
+}
+
+type Query {
+  item(id: ID!): Task
+  items: [Task!]!
+}
+
+type Mutation {
+  createTask(input: TaskInput!): Task!
+  updateTask(id: ID!, input: TaskUpdate!): Task!
+  deleteTask(id: ID!): DeleteResult!
+}

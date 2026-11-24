@@ -1,0 +1,58 @@
+# Shared GraphQL Project Contract (Guide Page 5)
+type User {
+  id: ID!
+  email: String!
+}
+
+enum Priority {
+  LOW
+  NORMAL
+  HIGH
+}
+
+enum TaskStatus {
+  OPEN
+  IN_PROGRESS
+  DONE
+}
+
+type Task {
+  id: ID!
+  title: String!
+  priority: Priority!
+  status: TaskStatus!
+  ownerId: ID!
+}
+
+type TaskPage {
+  items: [Task!]!
+  total: Int!
+}
+
+input TaskInput {
+  title: String!
+  priority: Priority = NORMAL
+}
+
+input TaskUpdate {
+  title: String
+  priority: Priority
+  status: TaskStatus
+}
+
+type DeleteResult {
+  id: ID!
+  deleted: Boolean!
+}
+
+type Query {
+  me: User!
+  tasks(limit: Int = 20, offset: Int = 0, status: TaskStatus): TaskPage!
+  task(id: ID!): Task
+}
+
+type Mutation {
+  createTask(input: TaskInput!): Task!
+  updateTask(id: ID!, input: TaskUpdate!): Task!
+  deleteTask(id: ID!): DeleteResult!
+}

@@ -1,0 +1,44 @@
+# Day 24: GraphQL Schema with Bounded Pagination and Protected Types
+enum TaskStatus {
+  OPEN
+  IN_PROGRESS
+  DONE
+}
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+}
+
+type Project {
+  id: ID!
+  name: String!
+  description: String
+  ownerId: ID!
+  tasks(limit: Int = 20, offset: Int = 0): [Task!]!
+}
+
+type Task {
+  id: ID!
+  title: String!
+  status: TaskStatus!
+  ownerId: ID!
+  projectId: ID
+  project: Project
+}
+
+type TaskPage {
+  items: [Task!]!
+  total: Int!
+  limit: Int!
+  offset: Int!
+}
+
+type Query {
+  me: User!
+  # Bounded pagination: limit clamped to 1-50, offset >= 0
+  tasks(limit: Int = 20, offset: Int = 0, status: TaskStatus): TaskPage!
+  task(id: ID!): Task
+  projects(limit: Int = 20, offset: Int = 0): [Project!]!
+}
